@@ -1,15 +1,24 @@
 # Acciona Twitter API - entrevista
 
 ## Instalacion 
-Para ejecutar la aplicacion se debe compilar
-````shell
-mvn clean install 
-````
-y ejecutar mediante 
-````shell
-mvn spring-boot:run
-````
-y acceder al la url http://localhost:8080/swagger-ui/index.html
+Para ejecutar la aplicacion antes se debe añadir las credenciales te twitter al fichero `src/main/resources/twitter4j.properties`
+Una vez definidas las credenciales, ejecutar aon una de las 2 opciones:
+* Opcion maven  
+  Compilar con 
+  ````shell
+  mvn clean install 
+  ````
+  y ejecutar mediante 
+  ````shell
+  mvn spring-boot:run
+  ````
+* Opcion docker-compose   
+  Ejecutar
+  ```shell
+  docker-compose up -d
+  ```
+
+y acceder al swagger de la aplicación http://localhost:8080/swagger-ui.html
 
 
 ## Implementación

@@ -33,7 +33,7 @@ class UserControllerTest {
         List<Tweet> tweets = getRandomTweetCollection(2);
         when(userApplicationService.getValidatedTweets("Alejandro", Boolean.TRUE)).thenReturn(tweets);
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
-                .get("/twitter-api/users/{id}/validatedTweets", 24)
+                .get("/twitter-api/users/{userName}/tweets", "Alejandro")
                 .param("valid", "true"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))

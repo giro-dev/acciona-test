@@ -13,12 +13,12 @@ public class UserController {
 
     private final UserApplicationService userAplicationService;
 
-    @GetMapping(path = "/users/{userId}/validatedTweets")
+    @GetMapping(path = "/users/{userName}/tweets")
     @Operation(summary = "Get validated Tweets from user")
     public ResponseEntity getUserTweets(
-            @PathVariable String userId,
+            @PathVariable String userName,
             @RequestParam(name = "valid", required = true) Boolean valid){
-        return ResponseEntity.ok(userAplicationService.getValidatedTweets(userId, valid));
+        return ResponseEntity.ok(userAplicationService.getValidatedTweets(userName, valid));
     }
 
 }

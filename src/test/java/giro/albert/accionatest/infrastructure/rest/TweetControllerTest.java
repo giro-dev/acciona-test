@@ -40,7 +40,7 @@ public class TweetControllerTest {
     TweetApplicationService tweetsService;
 
     @Captor
-    ArgumentCaptor<PatchTweettBody> validationRequest;
+    ArgumentCaptor<Boolean> validationRequest;
 
     @Test
     void getTweets() throws Exception {
@@ -61,7 +61,7 @@ public class TweetControllerTest {
         Tweet tweet = getRandomTweet();
         tweet.setValid(Boolean.TRUE);
 
-        when(tweetsService.validateTweet(eq(15L), eq(new PatchTweettBody(Boolean.TRUE)))).thenReturn(tweet);
+        when(tweetsService.validateTweet(eq(15L), eq(Boolean.TRUE))).thenReturn(tweet);
 
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
                 .patch("/twitter-api/tweets/{id}", 15L)
@@ -75,7 +75,7 @@ public class TweetControllerTest {
 
         assertAll("Check Call to update",
                 ()-> verify(tweetsService, times(1)).validateTweet(eq(15L),  validationRequest.capture()),
-                ()-> assertTrue(validationRequest.getValue().getValid())
+                ()-> assertTrue(validationRequest.getValue())
         );
 
     }
@@ -83,7 +83,7 @@ public class TweetControllerTest {
   @DisplayName("When validate a non existing TweetId throw error")
     void validateNoExistingTweet() throws Exception {
         Tweet tweet = getRandomTweet();
-        when(tweetsService.validateTweet(eq(15L),  eq(new PatchTweettBody(Boolean.TRUE)))).thenThrow(new NoSuchElementException("No exists tweets with this Id"));
+        when(tweetsService.validateTweet(eq(15L),  eq(Boolean.TRUE))).thenThrow(new NoSuchElementException("No exists tweets with this Id"));
 
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
                 .patch("/twitter-api/tweets/{id}", 15L)
@@ -96,7 +96,7 @@ public class TweetControllerTest {
 
       assertAll("Check Call to update",
               ()->verify(tweetsService, times(1)).validateTweet(eq(15L),  validationRequest.capture()),
-              ()-> assertTrue(validationRequest.getValue().getValid())
+              ()-> assertTrue(validationRequest.getValue())
       );    }
 
 }
