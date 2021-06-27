@@ -1,6 +1,5 @@
 package giro.albert.accionatest.infrastructure.db.repository;
 
-import giro.albert.accionatest.domain.model.Hashtag;
 import giro.albert.accionatest.domain.model.Tweet;
 import giro.albert.accionatest.domain.reposirory.TweetRepository;
 import giro.albert.accionatest.infrastructure.db.entity.TweetEntity;
@@ -50,7 +49,7 @@ public class databaseTweetRepository implements TweetRepository {
     }
 
     @Override
-    public List<Tweet> getValidatedTweetsByUser(Long userId, Boolean validated) {
+    public List<Tweet> getValidatedTweetsByUser(String userId, Boolean validated) {
         return jpaTweetRepository.findValidatedByUser(userId, validated).stream()
                 .map(tweetMapper::fromTweetEntity).collect(Collectors.toList());
     }

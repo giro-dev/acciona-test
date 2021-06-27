@@ -16,7 +16,7 @@ public class UserController {
     @GetMapping(path = "/users/{userId}/validatedTweets")
     @Operation(summary = "Get validated Tweets from user")
     public ResponseEntity getUserTweets(
-            @PathVariable Long userId,
+            @PathVariable String userId,
             @RequestParam(name = "valid", required = true) Boolean valid){
         return ResponseEntity.ok(userAplicationService.getValidatedTweets(userId, valid));
     }

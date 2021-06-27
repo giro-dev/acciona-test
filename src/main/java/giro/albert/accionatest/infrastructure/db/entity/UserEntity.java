@@ -12,8 +12,6 @@ import java.util.Set;
 @Table(name = "users")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long userId;
     private String screenName;
     private String localization;
     @OneToMany

@@ -14,7 +14,7 @@ public class UserApplicationService {
 
     private final TweetRepository tweetRepository;
 
-    public Collection<Tweet> getValidatedTweets(Long userId, Boolean validated) {
-        return tweetRepository.getValidatedTweetsByUser(userId, validated);
+    public Collection<Tweet> getValidatedTweets(String user, Boolean validated) {
+        return tweetRepository.getValidatedTweetsByUser(user, validated);
     }
 }

@@ -1,7 +1,16 @@
 # Acciona Twitter API - entrevista
 
 ## Instalacion 
-Para ejecutar la aplicacion 
+Para ejecutar la aplicacion se debe compilar
+````shell
+mvn clean install 
+````
+y ejecutar mediante 
+````shell
+mvn spring-boot:run
+````
+y acceder al la url http://localhost:8080/swagger-ui/index.html
+
 
 ## Implementación
 La api se ha desarrollado segun las especificaciones detalladas y consta de dos ejes:

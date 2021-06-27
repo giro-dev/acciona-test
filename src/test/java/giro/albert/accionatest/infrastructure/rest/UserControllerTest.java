@@ -31,7 +31,7 @@ class UserControllerTest {
     @Test
     void getUserTweets() throws Exception {
         List<Tweet> tweets = getRandomTweetCollection(2);
-        when(userApplicationService.getValidatedTweets(24L, Boolean.TRUE)).thenReturn(tweets);
+        when(userApplicationService.getValidatedTweets("Alejandro", Boolean.TRUE)).thenReturn(tweets);
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
                 .get("/twitter-api/users/{id}/validatedTweets", 24)
                 .param("valid", "true"))
@@ -39,7 +39,7 @@ class UserControllerTest {
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id").value(tweets.get(0).getId()));
 
-        verify(userApplicationService, times(1)).getValidatedTweets(24L, Boolean.TRUE);
+        verify(userApplicationService, times(1)).getValidatedTweets("Alejandro", Boolean.TRUE);
     }
 
 }

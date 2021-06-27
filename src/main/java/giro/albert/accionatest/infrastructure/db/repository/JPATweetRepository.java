@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface JPATweetRepository extends JpaRepository<TweetEntity, Long> {
 
-    @Query("FROM TweetEntity t where t.user.userId = :id and t.validated = :valid")
-    List<TweetEntity> findValidatedByUser(@Param("id") Long id, @Param("valid") Boolean validated);
+    @Query("FROM TweetEntity t where t.user.screenName = :id and t.validated = :valid")
+    List<TweetEntity> findValidatedByUser(@Param("id") String id, @Param("valid") Boolean validated);
 
 }

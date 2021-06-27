@@ -12,10 +12,9 @@ import java.util.Set;
 @Data
 @Builder
 public class User {
-    private Long userId;
-    private String localization;
     @JsonProperty("userName")
     private String screenName;
+    private String localization;
     @JsonIgnore
     private int followersCount;
 }

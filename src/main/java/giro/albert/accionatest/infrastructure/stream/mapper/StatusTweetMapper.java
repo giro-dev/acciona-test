@@ -25,7 +25,6 @@ public class StatusTweetMapper {
 
     public User fromStatusUser(twitter4j.User user){
         return User.builder()
-                .userId(user.getId())
                 .screenName(user.getScreenName())
                 .localization(user.getLocation())
                 .followersCount(user.getFollowersCount())

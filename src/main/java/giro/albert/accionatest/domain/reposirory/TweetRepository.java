@@ -13,5 +13,5 @@ public interface TweetRepository {
 
     Tweet getTweet(Long id);
 
-    List<Tweet> getValidatedTweetsByUser(Long userId, Boolean validated);
+    List<Tweet> getValidatedTweetsByUser(String userId, Boolean validated);
 }
