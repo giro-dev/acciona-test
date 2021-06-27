@@ -1,7 +1,9 @@
 package giro.albert.accionatest.app.services;
 
+import giro.albert.accionatest.domain.reposirory.HastagRepository;
 import giro.albert.accionatest.domain.reposirory.TweetRepository;
 import giro.albert.accionatest.domain.model.Tweet;
+import giro.albert.accionatest.domain.service.TweetFilter;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,7 +27,10 @@ class TweetApplicationServiceTest {
     @Mock
     TweetRepository tweetRepository;
 
-    FilterService filterService = new FilterService();
+    @Mock
+    HastagRepository hastagRepository;
+
+    TweetFilter filterService = new TweetFilter();
 
     @BeforeEach
     void setup() {
@@ -36,7 +41,7 @@ class TweetApplicationServiceTest {
         ReflectionTestUtils.setField(filterService, "validLanguages", langs);
         ReflectionTestUtils.setField(filterService, "followersThreshold", 1500);
 
-        tweetApplicationService = new TweetApplicationService(tweetRepository, filterService);
+        tweetApplicationService = new TweetApplicationService(tweetRepository, hastagRepository, filterService);
     }
 
 

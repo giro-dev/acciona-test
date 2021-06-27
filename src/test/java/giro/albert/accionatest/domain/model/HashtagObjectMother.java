@@ -7,14 +7,12 @@ import java.util.List;
 
 public class HashtagObjectMother {
 
-    public static HashTag getRandom(){
-        HashTag hashtag = new HashTag();
-        hashtag.setText(RandomStringUtils.randomAlphanumeric(10));
-        return hashtag;
+    public static Hashtag getRandom(){
+        return Hashtag.builder().hashtag(RandomStringUtils.randomAlphanumeric(10)).build();
     }
 
-    public static List<HashTag> getRandomCollection(Integer size){
-        List<HashTag> hashtag = new ArrayList<>();
+    public static List<Hashtag> getRandomCollection(Integer size){
+        List<Hashtag> hashtag = new ArrayList<>();
         for (int i = 0; i<size; i++){
             hashtag.add(getRandom());
         }

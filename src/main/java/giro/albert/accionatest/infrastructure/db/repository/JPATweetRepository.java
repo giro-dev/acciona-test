@@ -1,6 +1,7 @@
 package giro.albert.accionatest.infrastructure.db.repository;
 
 import giro.albert.accionatest.domain.model.Tweet;
+import giro.albert.accionatest.infrastructure.db.entity.HashtagEntity;
 import giro.albert.accionatest.infrastructure.db.entity.TweetEntity;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +16,5 @@ public interface JPATweetRepository extends JpaRepository<TweetEntity, Long> {
 
     @Query("FROM TweetEntity t where t.user.userId = :id and t.validated = :valid")
     List<TweetEntity> findValidatedByUser(@Param("id") Long id, @Param("valid") Boolean validated);
+
 }

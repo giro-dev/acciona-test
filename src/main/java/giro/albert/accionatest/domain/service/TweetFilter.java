@@ -1,4 +1,4 @@
-package giro.albert.accionatest.app.services;
+package giro.albert.accionatest.domain.service;
 
 import giro.albert.accionatest.domain.model.Tweet;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 @Component
-public class FilterService {
+public class TweetFilter {
 
     @Value("${twitter.accepted.languages:es,fr,it}")
     private Set<String> validLanguages;

@@ -2,6 +2,7 @@ package giro.albert.accionatest.infrastructure.rest;
 
 import giro.albert.accionatest.app.services.UserApplicationService;
 import giro.albert.accionatest.domain.model.Tweet;
+import giro.albert.accionatest.infrastructure.rest.controller.UserController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -32,7 +33,8 @@ class UserControllerTest {
         List<Tweet> tweets = getRandomTweetCollection(2);
         when(userApplicationService.getValidatedTweets(24L, Boolean.TRUE)).thenReturn(tweets);
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
-                .get("/twitter-api/users/{id}/validatedTweets", 24))
+                .get("/twitter-api/users/{id}/validatedTweets", 24)
+                .param("valid", "true"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id").value(tweets.get(0).getId()));

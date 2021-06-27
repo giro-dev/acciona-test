@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PatchRequestBody {
-    private Boolean validated;
+public class PatchTweettBody {
+    private Boolean valid;
 }

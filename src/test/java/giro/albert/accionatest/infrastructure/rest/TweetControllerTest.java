@@ -2,7 +2,8 @@ package giro.albert.accionatest.infrastructure.rest;
 
 import giro.albert.accionatest.domain.model.Tweet;
 import giro.albert.accionatest.app.services.TweetApplicationService;
-import giro.albert.accionatest.infrastructure.rest.model.PatchRequestBody;
+import giro.albert.accionatest.infrastructure.rest.controller.TweetController;
+import giro.albert.accionatest.infrastructure.rest.model.PatchTweettBody;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -39,7 +40,7 @@ public class TweetControllerTest {
     TweetApplicationService tweetsService;
 
     @Captor
-    ArgumentCaptor<PatchRequestBody> validationRequest;
+    ArgumentCaptor<PatchTweettBody> validationRequest;
 
     @Test
     void getTweets() throws Exception {
@@ -58,20 +59,23 @@ public class TweetControllerTest {
     @Test
     void validateTweet() throws Exception {
         Tweet tweet = getRandomTweet();
-        when(tweetsService.validateTweet(eq(15L), eq(new PatchRequestBody(Boolean.TRUE)))).thenReturn(tweet);
+        tweet.setValid(Boolean.TRUE);
+
+        when(tweetsService.validateTweet(eq(15L), eq(new PatchTweettBody(Boolean.TRUE)))).thenReturn(tweet);
 
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
                 .patch("/twitter-api/tweets/{id}", 15L)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .accept(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
-                .content("{\"validated\" : true}"))
+                .content("{\"valid\" : true}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(tweet.getId()));
+                .andExpect(jsonPath("$.id").value(tweet.getId()))
+                .andExpect(jsonPath("$.valid").value(true));
 
         assertAll("Check Call to update",
                 ()-> verify(tweetsService, times(1)).validateTweet(eq(15L),  validationRequest.capture()),
-                ()-> assertTrue(validationRequest.getValue().getValidated())
+                ()-> assertTrue(validationRequest.getValue().getValid())
         );
 
     }
@@ -79,20 +83,20 @@ public class TweetControllerTest {
   @DisplayName("When validate a non existing TweetId throw error")
     void validateNoExistingTweet() throws Exception {
         Tweet tweet = getRandomTweet();
-        when(tweetsService.validateTweet(eq(15L),  eq(new PatchRequestBody(Boolean.TRUE)))).thenThrow(new NoSuchElementException("No exists tweets with this Id"));
+        when(tweetsService.validateTweet(eq(15L),  eq(new PatchTweettBody(Boolean.TRUE)))).thenThrow(new NoSuchElementException("No exists tweets with this Id"));
 
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
                 .patch("/twitter-api/tweets/{id}", 15L)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .accept(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
-                .content("{\"validated\" : true}"))
+                .content("{\"valid\" : true}"))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.error").value("No exists tweets with this Id"));
 
       assertAll("Check Call to update",
               ()->verify(tweetsService, times(1)).validateTweet(eq(15L),  validationRequest.capture()),
-              ()-> assertTrue(validationRequest.getValue().getValidated())
+              ()-> assertTrue(validationRequest.getValue().getValid())
       );    }
 
 }

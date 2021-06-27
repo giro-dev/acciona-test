@@ -12,9 +12,9 @@ public class UserObjectMother {
     public static User getRandomUser(int minimumFollowers, int maximumFollowers){
     return User.builder()
                     .userId(nextLong())
-                    .name(randomAlphanumeric(15))
                     .screenName(randomAlphanumeric(12))
                     .followersCount(nextInt(minimumFollowers, maximumFollowers))
+                    .localization(randomAlphanumeric(50))
                     .build();
     }
 }

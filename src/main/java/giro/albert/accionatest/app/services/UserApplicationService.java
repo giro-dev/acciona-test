@@ -11,9 +11,10 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class UserApplicationService {
 
+
     private final TweetRepository tweetRepository;
 
     public Collection<Tweet> getValidatedTweets(Long userId, Boolean validated) {
-        return tweetRepository.getValidatedTweets(userId, validated);
+        return tweetRepository.getValidatedTweetsByUser(userId, validated);
     }
 }

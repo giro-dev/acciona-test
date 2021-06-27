@@ -5,21 +5,13 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
-@Data
 @Entity
-@Table(name = "users")
-public class UserEntity {
+@Table(name = "hashtags")
+@Data
+public class HashtagEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long userId;
-    private String screenName;
-    private String localization;
-    @OneToMany
+    private String text;
+    @ManyToMany
     private List<TweetEntity> tweets;
-
-
-
-
 }

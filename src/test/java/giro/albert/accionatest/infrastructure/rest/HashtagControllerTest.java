@@ -1,8 +1,8 @@
 package giro.albert.accionatest.infrastructure.rest;
 
 import giro.albert.accionatest.app.services.HashtagApplicationService;
-import giro.albert.accionatest.domain.model.HashTag;
-import giro.albert.accionatest.infrastructure.rest.HashtagController;
+import giro.albert.accionatest.domain.model.Hashtag;
+import giro.albert.accionatest.infrastructure.rest.controller.HashtagController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -31,16 +31,16 @@ class HashtagControllerTest {
 
     @Test
     void getUserTweets() throws Exception {
-        List<HashTag> hashTags = getRandomCollection(2);
+        List<Hashtag> hashtags = getRandomCollection(2);
         Integer topLimit = 10;
-        when(hashtagApplicationService.getTopHashTags(topLimit)).thenReturn(hashTags);
+        when(hashtagApplicationService.getTopHashTags(topLimit)).thenReturn(hashtags);
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
                 .get("/twitter-api/hashtags", 24)
                 .param("topLimit", "10"))
 
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].text").value(hashTags.get(0).getText()));
+                .andExpect(jsonPath("$[0].hashtag").value(hashtags.get(0).getHashtag()));
 
         verify(hashtagApplicationService, times(1)).getTopHashTags(topLimit);
     }
