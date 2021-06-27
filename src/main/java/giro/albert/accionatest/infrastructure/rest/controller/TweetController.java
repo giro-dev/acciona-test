@@ -23,7 +23,7 @@ public class TweetController {
     @PatchMapping(path = "/tweets/{id}")
     @Operation(summary = "Set validation status on selected tweet")
     public ResponseEntity validateTweet(@PathVariable Long id, @RequestBody PatchTweettBody validationRequest) {
-        return ResponseEntity.ok(tweetsService.validateTweet(id, validationRequest));
+        return ResponseEntity.ok(tweetsService.validateTweet(id, validationRequest.getValid()));
     }
 
 

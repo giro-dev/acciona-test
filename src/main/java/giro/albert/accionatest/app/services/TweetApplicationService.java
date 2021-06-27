@@ -4,7 +4,6 @@ import giro.albert.accionatest.domain.reposirory.HastagRepository;
 import giro.albert.accionatest.domain.reposirory.TweetRepository;
 import giro.albert.accionatest.domain.model.Tweet;
 import giro.albert.accionatest.domain.service.TweetFilter;
-import giro.albert.accionatest.infrastructure.rest.model.PatchTweettBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -22,9 +21,9 @@ public class TweetApplicationService {
         return tweetRepository.getAllTweets();
     }
 
-    public Tweet validateTweet(Long id, PatchTweettBody validationRequest) {
+    public Tweet validateTweet(Long id, Boolean isValidated) {
         Tweet tweet = tweetRepository.getTweet(id);
-        tweet.setValid(validationRequest.getValid());
+        tweet.setValid(isValidated);
         tweetRepository.saveTweet(tweet);
         return tweet;
     }
