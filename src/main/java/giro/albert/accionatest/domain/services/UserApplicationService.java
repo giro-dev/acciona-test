@@ -11,7 +11,6 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class UserApplicationService {
 
-
     private final TweetRepository tweetRepository;
 
     public Collection<Tweet> getValidatedTweets(String user, Boolean validated) {

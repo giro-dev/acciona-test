@@ -3,12 +3,9 @@ services:
   acciona-test:
     container_name: acciona-test
     build:
-
       context: .
       dockerfile: Dockerfile
 
-      args:
-        - VERSION:"0.0.1-SNAPSHOT"
     image: acciona-test:latest
 
     ports:

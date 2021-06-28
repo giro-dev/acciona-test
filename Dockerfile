@@ -6,6 +6,6 @@ RUN mvn -f /home/app/pom.xml clean install
 
 
 FROM openjdk:8-jre-slim
-COPY --from=build /home/app/target/*-SNAPSHOT.jar /usr/local/lib/app.jar
+COPY --from=build /home/app/target/acciona-test*.jar /usr/local/lib/app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/usr/local/lib/app.jar"]
