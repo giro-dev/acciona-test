@@ -26,9 +26,9 @@ La api se ha desarrollado segun las especificaciones detalladas y consta de dos 
 * Lectura de Tweets a través del Stream de la api de twitter.   
   Esta parte se encarga de nutrir la base de datos con los tweets que se van recuperando del stream mediante ``twitter4j``.
   La inclusión en la base de datos de los tweets que llegan esta sujeta a una serie de requisitos:
-  * ser del idioma de la lista de permitidos 
-  * tener un mínimo de seguidores
-    
+  * El idioma debe estar en la lista de permitidos (`twitter.accepted.languages`), si no existe se usará valores por defecto _es,it,fr_
+  * Tener un mínimo de seguidores definido mediante (`twitter.minimum.followers`) y con valor por omision de _1500_
+  Estos requisitos se pueden configurar en el fichero `src/main/resources/application.properties`
   
 * API REST para consultar los tweets almacenados.
 
@@ -45,14 +45,15 @@ Permite marcar o desmarcar un tweet como valido segun el booleano que se pase co
 `/twitter-api/tweets`
 _Get all saved Tweets
 user-controller_
-
+Lista todos los tweets almacenados.
 
 **GET**
-`/twitter-api/users/{userId}/validatedTweets`
+`/twitter-api/users/{userId}/tweets`
 _Get validated Tweets from user
 hashtag-controller_
-
+Permite visualizar los tweets de un usuario definiendo si se quiere mostrar solo valinados o no validados mediante el parametro `valid`.
 
 **GET**
 `/twitter-api/hashtags`
 _Get Top used Hastags_
+Muestra una lista de los hastags mas utilizados ordenados descendentemente. si no se detalla ningun valor como limite de la lista se toma 10 como valor por defecto.
