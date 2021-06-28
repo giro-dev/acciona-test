@@ -1,4 +1,4 @@
-package giro.albert.accionatest.infrastructure.rest.model;
+package giro.albert.accionatest.app.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

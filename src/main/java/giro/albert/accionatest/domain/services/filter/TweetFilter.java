@@ -1,10 +1,8 @@
-package giro.albert.accionatest.domain.service;
+package giro.albert.accionatest.domain.services.filter;
 
 import giro.albert.accionatest.domain.model.Tweet;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import twitter4j.Status;
 
 import java.util.Set;
 import java.util.function.Predicate;

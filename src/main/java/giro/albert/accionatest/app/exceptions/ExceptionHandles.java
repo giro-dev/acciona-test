@@ -1,4 +1,4 @@
-package giro.albert.accionatest.infrastructure.rest.exceptions;
+package giro.albert.accionatest.app.exceptions;
 
 
 import org.springframework.http.HttpStatus;

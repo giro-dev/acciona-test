@@ -1,9 +1,9 @@
-package giro.albert.accionatest.app.services;
+package giro.albert.accionatest.domain.services;
 
 import giro.albert.accionatest.domain.reposirory.HastagRepository;
 import giro.albert.accionatest.domain.reposirory.TweetRepository;
 import giro.albert.accionatest.domain.model.Tweet;
-import giro.albert.accionatest.domain.service.TweetFilter;
+import giro.albert.accionatest.domain.services.filter.TweetFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

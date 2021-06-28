@@ -1,6 +1,6 @@
-package giro.albert.accionatest.infrastructure.rest.controller;
+package giro.albert.accionatest.app.controller;
 
-import giro.albert.accionatest.app.services.UserApplicationService;
+import giro.albert.accionatest.domain.services.UserApplicationService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

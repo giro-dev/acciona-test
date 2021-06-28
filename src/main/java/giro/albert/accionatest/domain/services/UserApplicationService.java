@@ -1,4 +1,4 @@
-package giro.albert.accionatest.app.services;
+package giro.albert.accionatest.domain.services;
 
 import giro.albert.accionatest.domain.model.Tweet;
 import giro.albert.accionatest.domain.reposirory.TweetRepository;

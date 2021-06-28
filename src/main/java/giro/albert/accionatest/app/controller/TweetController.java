@@ -1,7 +1,7 @@
-package giro.albert.accionatest.infrastructure.rest.controller;
+package giro.albert.accionatest.app.controller;
 
-import giro.albert.accionatest.infrastructure.rest.model.PatchTweettBody;
-import giro.albert.accionatest.app.services.TweetApplicationService;
+import giro.albert.accionatest.app.model.PatchTweettBody;
+import giro.albert.accionatest.domain.services.TweetApplicationService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

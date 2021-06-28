@@ -1,8 +1,7 @@
-package giro.albert.accionatest.infrastructure.rest.controller;
+package giro.albert.accionatest.app.controller;
 
-import giro.albert.accionatest.app.services.HashtagApplicationService;
+import giro.albert.accionatest.domain.services.HashtagApplicationService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

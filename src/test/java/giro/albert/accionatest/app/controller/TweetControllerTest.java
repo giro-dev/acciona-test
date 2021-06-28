@@ -1,9 +1,8 @@
-package giro.albert.accionatest.infrastructure.rest;
+package giro.albert.accionatest.app.controller;
 
 import giro.albert.accionatest.domain.model.Tweet;
-import giro.albert.accionatest.app.services.TweetApplicationService;
-import giro.albert.accionatest.infrastructure.rest.controller.TweetController;
-import giro.albert.accionatest.infrastructure.rest.model.PatchTweettBody;
+import giro.albert.accionatest.domain.services.TweetApplicationService;
+import giro.albert.accionatest.app.controller.TweetController;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;

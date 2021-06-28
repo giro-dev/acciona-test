@@ -1,6 +1,6 @@
 package giro.albert.accionatest.infrastructure.stream;
 
-import giro.albert.accionatest.app.services.TweetApplicationService;
+import giro.albert.accionatest.domain.services.TweetApplicationService;
 import giro.albert.accionatest.infrastructure.stream.mapper.StatusTweetMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

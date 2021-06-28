@@ -3,6 +3,7 @@ services:
   acciona-test:
     container_name: acciona-test
     build:
+
       context: .
       dockerfile: Dockerfile
 
